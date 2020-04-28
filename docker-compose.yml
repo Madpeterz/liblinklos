@@ -1,0 +1,46 @@
+version: '2'
+services:
+    app:
+        image: madpeter/liblinklos:latest
+        restart: always
+        ports:
+            - 6080:80
+        network_mode: bridge
+        links:
+            - db2
+            - redis2
+        environment:
+            SITE_TITLE: SecondBotHosted
+            SITE_HOST: http://localhost:8080/
+            ENDPOINT_CODE: yepyepyepcool
+            DB_HOST: db2
+            DB_DATABASE: secondbothosted
+            DB_USERNAME: secondbothosted
+            DB_PASSWORD: SomethingSomething
+            REDIS_HOST: redis2
+            SESSION_DRIVER: redis2
+            CACHE_DRIVER: redis2
+            LSL_CODE: fire
+    db2:
+        network_mode: bridge
+        image: mariadb
+        restart: always
+        environment:
+            MYSQL_ROOT_PASSWORD: 9lAO7d0nkA91Vt1Wa
+            MYSQL_DATABASE: secondbothosted
+            MYSQL_USER: secondbothosted
+            MYSQL_PASSWORD: SomethingSomething
+    phpmyadmin2:
+        network_mode: bridge
+        environment:
+            PMA_HOST: db2
+        image: 'phpmyadmin/phpmyadmin:latest'
+        ports:
+            - '6888:80'
+        links:
+            - db2
+    redis2:
+        network_mode: bridge
+        image: redis:4.0-alpine
+        ports:
+            - 16111:6379
