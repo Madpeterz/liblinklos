@@ -5,7 +5,7 @@ $menu_items = array(
         "target" => "home",
         "active_on" => array("home","bot"),
     ),
-    "Bots" => array(
+    "Bot Config Library" => array(
         "icon" => "fas fa-cogs",
         "target" => "config",
         "active_on" => array("config"),
