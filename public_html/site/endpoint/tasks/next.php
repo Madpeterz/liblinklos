@@ -30,40 +30,27 @@ if($pending_command_set->get_count() > 0)
                 {
                     $reply["containername"] = $client_rental->get_rental_uid();
                     $env_values = array(
-                        "BotRunningInDocker" => 'REQUIRED',
-                        "userName"=>$second_bot_config->get_userName(),
-                        "password"=>$second_bot_config->get_password(),
-                        "master"=>$second_bot_config->get_master(),
-                        "code"=>$second_bot_config->get_code(),
-                        "discord"=>'',
-                        "discordGroupTarget"=>'',
-                        "allowRLV"=>array(false=>"false",true=>"true")[$second_bot_config->get_allowRLV()],
-                        "homeRegion"=>$second_bot_config->get_homeRegion(),
-                        "EnableHttp"=>'false',
-                        "Httpport"=>'',
-                        "Httpkey"=>'ThisIsAKeyYo',
-                        "HttpRequireSigned"=>'false',
-                        "HttpHost"=>'',
-                        "HttpAsCnC"=>'false',
-                        "DiscordFullServer"=>'false',
-                        "DiscordClientToken"=>'',
-                        "DiscordServerID"=>'',
-                        "DiscordServerImHistoryHours"=>''
+                        "Basic_BotUserName"=>,$second_bot_config->get_userName(),
+                        "Basic_BotPassword"=>$second_bot_config->get_password(),
+                        "Basic_HomeRegions"=>$second_bot_config->get_homeRegion(),
+
+                        "Security_MasterUsername"=>$second_bot_config->get_master(),
+                        "Security_SignedCommandkey"=>$second_bot_config->get_code(),
+                        "Security_WebUIKey"=>$second_bot_config->get_code(),
+
+                        "Setting_AllowRLV"=>array(false=>"false",true=>"true")[$second_bot_config->get_allowRLV()],
+                        "Setting_AllowFunds"=>"true",
+                        "Setting_LogCommands"=>"true",
+                        "Setting_RelayImToAvatarUUID"=>"",
+                        "Setting_DefaultSit_UUID"=>"",
+
+                        "DiscordRelay_URL"=>"",
+                        "DiscordRelay_GroupUUID"=>"",
+                        "DiscordFull_Enable"=>"false",
+                        "DiscordFull_Token"=>"",
+                        "DiscordFull_ServerID"=>"",
+
                     );
-                    if($client_rental->get_FeatureBasicDiscord() == true)
-                    {
-                        // +DiscordLight
-                        $env_values["discord"] = $second_bot_config->get_discordGroupTarget();
-                        $env_values["discordGroupTarget"] = $second_bot_config->get_discordGroupTarget();
-                    }
-                    if($client_rental->get_FeatureFatDiscord() == true)
-                    {
-                        // +DiscordFull
-                    }
-                    if($client_rental->get_FeatureHttp() == true)
-                    {
-                        // +HTTP
-                    }
                     $addon = "";
                     $reply["containerenv"] = "";
                     foreach($env_values as $key => $value)
