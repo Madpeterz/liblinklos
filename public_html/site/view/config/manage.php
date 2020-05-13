@@ -3,6 +3,13 @@ $template_parts["html_title"] .= " ~ Manage";
 $template_parts["page_title"] .= "Editing config";
 $template_parts["page_actions"] = "<a href='[[url_base]]config/remove/".$page."'><button type='button' class='btn btn-danger'>Remove</button></a>";
 
+function get_truefalse($a)
+{
+    if($a == "1") return 1;
+    else if($a == "true") return 1;
+    else return 0;
+}
+
 $second_bot_config = new second_bot_config();
 if($second_bot_config->load_by_field("config_uid",$page) == true)
 {
@@ -22,7 +29,7 @@ if($second_bot_config->load_by_field("config_uid",$page) == true)
             $form->text_input("code","LSL interact code",125,$second_bot_config->get_code(),"Dont Tell Anyone");
         $form->col(6);
         $form->group("Settings");
-            $form->select("allowrlv","RLV support",$second_bot_config->get_allowRLV(),array(0=>"No",1=>"Yes"));
+            $form->select("allowrlv","RLV support",get_truefalse($second_bot_config->get_allowRLV()),array(0=>"No",1=>"Yes"));
             $form->text_input("Setting_RelayImToAvatarUUID","IM to UUID relay",36,$second_bot_config->get_Setting_RelayImToAvatarUUID(),"");
             $form->text_input("Setting_DefaultSit_UUID","Default Sit UUID",36,$second_bot_config->get_Setting_DefaultSit_UUID(),"");
         $form->col(6);
@@ -34,7 +41,7 @@ if($second_bot_config->load_by_field("config_uid",$page) == true)
             $form->text_input("discordgroupuuid","Discord [Relay] group",125,$second_bot_config->get_discordGroupTarget(),"Target group UUID");
         $form->col(6);
         $form->group("Discord [Full]");
-            $form->select("DiscordFull_Enable","Enable",$second_bot_config->get_DiscordFull_Enable(),array(0=>"No",1=>"Yes"));
+            $form->select("DiscordFull_Enable","Enable",get_truefalse($second_bot_config->get_DiscordFull_Enable()),array(0=>"No",1=>"Yes"));
             $form->text_input("DiscordFull_Token","Client token",200,$second_bot_config->get_DiscordFull_Token(),"Find in discord dev bot");
             $form->text_input("DiscordFull_ServerID","Server id",200,$second_bot_config->get_DiscordFull_ServerID(),"Find under widgets in discord");
         echo $form->render("Update","primary");
