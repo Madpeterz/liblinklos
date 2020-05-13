@@ -9,6 +9,7 @@ if($expire_unixtime < time())
     $onhold = true;
 }
 $client_rental->set_field("onhold",$onhold);
+$client_rental->set_field("Http_Port",$port);
 $create_status = $client_rental->create_entry();
 if($create_status["status"] == true)
 {
