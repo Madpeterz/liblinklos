@@ -30,7 +30,7 @@ if($pending_command_set->get_count() > 0)
                 {
                     $reply["containername"] = $client_rental->get_rental_uid();
                     $env_values = array(
-                        "Basic_BotUserName"=>,$second_bot_config->get_userName(),
+                        "Basic_BotUserName"=>$second_bot_config->get_userName(),
                         "Basic_BotPassword"=>$second_bot_config->get_password(),
                         "Basic_HomeRegions"=>$second_bot_config->get_homeRegion(),
 
