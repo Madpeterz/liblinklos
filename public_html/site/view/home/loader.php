@@ -83,7 +83,7 @@ foreach($client_rental_set->get_all_ids() as $client_rental_id)
                     $status .= ' <a href="bot/restart/'.$client_rental->get_rental_uid().'"><button type="button" class="btn btn-outline-info">Relog</button></a>';
                     if($second_bot_config->get_Http_Enable() == true)
                     {
-                        $weburl = '<a href="https://bot'.$client_rental->get_rental_uid().'.'.getenv('BOT_DOMAIN').'/" target="_blank">View</a>"';
+                        $weburl = '<a href="https://bot'.$client_rental->get_rental_uid().'.'.getenv('BOT_DOMAIN').'/" target="_blank">View</a>';
                     }
                 }
             }
