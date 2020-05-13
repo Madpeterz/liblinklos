@@ -22,7 +22,7 @@ if($second_bot_config->load_by_field("config_uid",$page) == true)
             $form->text_input("code","LSL interact code",125,$second_bot_config->get_code(),"Dont Tell Anyone");
         $form->col(6);
         $form->group("Settings");
-            $form->select("allowrlv","RLV support",$second_bot_config->get_allowRLV(),array(false=>"No",true=>"Yes"));
+            $form->select("allowrlv","RLV support",$second_bot_config->get_allowRLV(),array(0=>"No",1=>"Yes"));
             $form->text_input("Setting_RelayImToAvatarUUID","IM to UUID relay",36,$second_bot_config->get_Setting_RelayImToAvatarUUID(),"");
             $form->text_input("Setting_DefaultSit_UUID","Default Sit UUID",36,$second_bot_config->get_Setting_DefaultSit_UUID(),"");
         $form->col(6);
@@ -34,7 +34,7 @@ if($second_bot_config->load_by_field("config_uid",$page) == true)
             $form->text_input("discordgroupuuid","Discord [Relay] group",125,$second_bot_config->get_discordGroupTarget(),"Target group UUID");
         $form->col(6);
         $form->group("Discord [Full]");
-            $form->select("DiscordFull_Enable","Enable",$second_bot_config->get_DiscordFull_Enable(),array(false=>"No",true=>"Yes"));
+            $form->select("DiscordFull_Enable","Enable",$second_bot_config->get_DiscordFull_Enable(),array(0=>"No",1=>"Yes"));
             $form->text_input("DiscordFull_Token","Client token",200,$second_bot_config->get_DiscordFull_Token(),"Find in discord dev bot");
             $form->text_input("DiscordFull_ServerID","Server id",200,$second_bot_config->get_DiscordFull_ServerID(),"Find under widgets in discord");
         echo $form->render("Update","primary");

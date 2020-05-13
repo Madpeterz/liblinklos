@@ -14,6 +14,15 @@ $DiscordFull_Enable = $input->postFilter("DiscordFull_Enable");
 $DiscordFull_Token = $input->postFilter("DiscordFull_Token");
 $DiscordFull_ServerID = $input->postFilter("DiscordFull_ServerID");
 
+function truefalse(string $a)
+{
+    if($a == "true") return true;
+    else if($a == "false") return true;
+    else if($a == "1") return true;
+    else if($a == "0") return true;
+    else return false;
+}
+
 $failed_on = "";
 if(count(explode(" ",$avatarname)) == 1) $avatarname .= " Resident";
 if(count(explode(" ",$master)) == 1) $master .= " Resident";
