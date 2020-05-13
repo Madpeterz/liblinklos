@@ -18,7 +18,7 @@ $pending_command_set = new pending_command_set();
 $pending_command_set->load_ids($second_bot_config_set->get_all_ids(),"secondbotconfiglink");
 
 
-$table_head = array("Bot name","Status","Service package / Rental ID","Expires"," ");
+$table_head = array("Bot name","Status","Service package / Rental ID","Expires","WebUI"," ");
 $table_body = array();
 $template_parts["page_title"] .= " Assignable slots";
 
@@ -47,6 +47,8 @@ foreach($client_rental_set->get_all_ids() as $client_rental_id)
     $status = "Unassigned";
     $assigned_bot = "-";
     $unassign = "";
+
+    $weburl = "/";
     if($client_rental->get_onhold() == true)
     {
         $status = "Expired [On hold]";
@@ -79,6 +81,10 @@ foreach($client_rental_set->get_all_ids() as $client_rental_id)
                     $unassign = "#";
                     $status = '<a href="bot/stop/'.$client_rental->get_rental_uid().'"><button type="button" class="btn btn-outline-danger">Shutdown</button></a>';
                     $status .= ' <a href="bot/restart/'.$client_rental->get_rental_uid().'"><button type="button" class="btn btn-outline-info">Relog</button></a>';
+                    if($second_bot_config->get_Http_Enable() == true)
+                    {
+                        $weburl = '<a href="https://bot'.$client_rental->get_rental_uid().'.'.getenv('BOT_DOMAIN').'/" target="_blank">View</a>"';
+                    }
                 }
             }
             else
@@ -88,28 +94,18 @@ foreach($client_rental_set->get_all_ids() as $client_rental_id)
             }
         }
     }
-    $package = "Basic";
-    if($client_rental->get_FeatureBasicDiscord() == true)
-    {
-        $package .= " +DiscordLight";
-    }
-    if($client_rental->get_FeatureFatDiscord() == true)
-    {
-        $package .= " +DiscordFull";
-    }
-    if($client_rental->get_FeatureHttp() == true)
-    {
-        $package .= " +HTTP";
-    }
+    $package = "SecondBotHosted";
     $entry = array();
     $entry[] = $assigned_bot;
     $entry[] = $status;
     $entry[] = $package. " ".$client_rental->get_rental_uid();
     $entry[] = date("l jS \of F Y h:i:s A",$client_rental->get_expires());
+    $entry[] = $weburl;
     $entry[] = $unassign;
     $table_body[] = $entry;
 }
 echo render_table($table_head,$table_body);
+echo "<br/><p>The webUI is still being worked<br/> on and is not ready for primetime yet expect it to change!</p>";
 echo "<hr/>";
 if((count($unassigned_configs) > 0) && (count($unassigned_rentals) > 0))
 {

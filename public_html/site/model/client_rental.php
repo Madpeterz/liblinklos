@@ -9,10 +9,8 @@
 			"id" => array("type"=>"int","value"=>null),
 			"rental_uid" => array("type"=>"str","value"=>null),
 			"clientlink" => array("type"=>"int","value"=>null),
+			"Http_Port" => array("type"=>"int","value"=>0),
 			"secondbotconfiglink" => array("type"=>"int","value"=>null),
-			"FeatureBasicDiscord" => array("type"=>"bool","value"=>0),
-			"FeatureFatDiscord" => array("type"=>"bool","value"=>0),
-			"FeatureHttp" => array("type"=>"bool","value"=>0),
 			"expires" => array("type"=>"int","value"=>0),
 			"onhold" => array("type"=>"bool","value"=>1),
 		);
@@ -28,21 +26,13 @@
 		{
 			return $this->get_field("clientlink");
 		}
+		public function get_Http_Port()
+		{
+			return $this->get_field("Http_Port");
+		}
 		public function get_secondbotconfiglink()
 		{
 			return $this->get_field("secondbotconfiglink");
-		}
-		public function get_FeatureBasicDiscord()
-		{
-			return $this->get_field("FeatureBasicDiscord");
-		}
-		public function get_FeatureFatDiscord()
-		{
-			return $this->get_field("FeatureFatDiscord");
-		}
-		public function get_FeatureHttp()
-		{
-			return $this->get_field("FeatureHttp");
 		}
 		public function get_expires()
 		{

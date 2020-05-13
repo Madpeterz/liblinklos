@@ -6,13 +6,19 @@ $homeregion = $input->postFilter("homeregion");
 $master = $input->postFilter("master");
 $code = $input->postFilter("code");
 $allowrlv = $input->postFilter("allowrlv","bool");
-$discordgroupuuid = $input->postFilter("discordgroupuuid");
-$DiscordRelayHook = $input->postFilter("DiscordRelayHook");
+
 $Setting_RelayImToAvatarUUID = $input->postFilter("Setting_RelayImToAvatarUUID");
 $Setting_DefaultSit_UUID = $input->postFilter("Setting_DefaultSit_UUID");
+
+$discordgroupuuid = $input->postFilter("discordgroupuuid");
+$DiscordRelayHook = $input->postFilter("DiscordRelayHook");
+
 $DiscordFull_Enable = $input->postFilter("DiscordFull_Enable");
 $DiscordFull_Token = $input->postFilter("DiscordFull_Token");
 $DiscordFull_ServerID = $input->postFilter("DiscordFull_ServerID");
+
+$Http_Enable = $input->postFilter("Http_Enable");
+$Security_WebUIKey = $input->postFilter("Security_WebUIKey");
 
 function truefalse(string $a)
 {
@@ -35,6 +41,10 @@ else if(strlen($Setting_DefaultSit_UUID) > 36) $failed_on .= " Setting_DefaultSi
 else if(strlen($Setting_RelayImToAvatarUUID) > 36) $failed_on .= " Setting_RelayImToAvatarUUID must be 36 or less";
 else if(truefalse($DiscordFull_Enable) == false) $failed_on .= " DiscordFull_Enable must be true or false";
 else if(truefalse($allowrlv) == false) $failed_on .= " allowrlv must be true or false";
+else if(truefalse($Http_Enable) == false) $failed_on .= " Http_Enable must be true or false";
+else if(strlen($Security_WebUIKey) < 12) $failed_on .= " Security_WebUIKey must be 12 or more";
+else if(strlen($Security_WebUIKey) > 125) $failed_on .= " Security_WebUIKey must be 125 or less";
+
 else if($avatarpassword != "dont-change")
 {
     if(strlen($avatarpassword) < 5) $failed_on .= " avatarpassword is to weak please go fix that now!";
@@ -72,6 +82,8 @@ if($failed_on == "")
                     $second_bot_config->set_field("DiscordFull_Enable",$DiscordFull_Enable);
                     $second_bot_config->set_field("DiscordFull_Token",$DiscordFull_Token);
                     $second_bot_config->set_field("DiscordFull_ServerID",$DiscordFull_ServerID);
+                    $second_bot_config->set_field("Http_Enable",$Http_Enable);
+                    $second_bot_config->set_field("Security_WebUIKey",$Security_WebUIKey);
                     $update_status = $second_bot_config->save_changes();
                     if($update_status["status"] == true)
                     {

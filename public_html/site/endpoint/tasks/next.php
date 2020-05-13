@@ -44,7 +44,7 @@ if($pending_command_set->get_count() > 0)
 
                         "Security_MasterUsername"=>$second_bot_config->get_master(),
                         "Security_SignedCommandkey"=>$second_bot_config->get_code(),
-                        "Security_WebUIKey"=>$second_bot_config->get_code(),
+                        "Security_WebUIKey"=>$second_bot_config->get_Security_WebUIKey(),
 
                         "Setting_AllowRLV"=>array(false=>"false",true=>"true")[get_truefalse($second_bot_config->get_allowRLV())],
                         "Setting_AllowFunds"=>"true",
@@ -58,6 +58,12 @@ if($pending_command_set->get_count() > 0)
                         "DiscordFull_Token"=>$second_bot_config->get_DiscordFull_Token(),
                         "DiscordFull_ServerID"=>$second_bot_config->get_DiscordFull_ServerID(),
 
+                        "Http_Enable" => array(false=>"false",true=>"true")[get_truefalse($second_bot_config->get_Http_Enable())],
+                        "Http_Port" => $client_rental->get_Http_Port(),
+                        "Http_Host" => "docker",
+                        "Http_PublicUrl" => 'https://bot'.$client_rental->get_rental_uid().'.'.getenv('BOT_DOMAIN').'/',
+                        "VIRTUAL_PORT" => $client_rental->get_Http_Port(),
+                        "VIRTUAL_HOST" => 'https://bot'.$client_rental->get_rental_uid().'.'.getenv('BOT_DOMAIN').'/',
                     );
                     $addon = "";
                     $reply["containerenv"] = "";

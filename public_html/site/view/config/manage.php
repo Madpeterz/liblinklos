@@ -34,7 +34,9 @@ if($second_bot_config->load_by_field("config_uid",$page) == true)
             $form->text_input("Setting_DefaultSit_UUID","Default Sit UUID",36,$second_bot_config->get_Setting_DefaultSit_UUID(),"");
         $form->col(6);
         $form->group("HTTP interface");
-            $form->direct_add("<p>Soon</p>");
+            $form->select("Http_Enable","Enable",get_truefalse($second_bot_config->get_Http_Enable()),array(false=>"No",1=>"Yes"));
+            $form->text_input("Security_WebUIKey","Web UI key",125,$second_bot_config->get_Security_WebUIKey(),"");
+            $form->direct_add("<p>The web UI is still being worked<br/> on and is not ready for primetime yet</p>");
         $form->col(6);
         $form->group("Discord [Relay]");
             $form->text_input("DiscordRelayHook","Discord [Relay] webhook",125,$second_bot_config->get_DiscordRelayHook(),"http://...");
