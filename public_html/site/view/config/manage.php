@@ -16,23 +16,27 @@ if($second_bot_config->load_by_field("config_uid",$page) == true)
             $form->text_input("avatarname","Name",125,$second_bot_config->get_userName(),"Second Bot");
             $form->text_input("avatarpassword","Password",125,"dont-change","Not hidden!");
             $form->text_input("homeregion","Homeregion (Collection csv)",125,$second_bot_config->get_homeRegion(),"\"http://maps.secondlife.com/secondlife/Ippopotamo/81/175/22\",\"http://maps.secondlife.com/secondlife/Ippopotamo/81/175/22\"");
+        $form->col(6);
         $form->group("Security");
             $form->text_input("master","Master",125,$second_bot_config->get_master(),"Bot Master");
             $form->text_input("code","LSL interact code",125,$second_bot_config->get_code(),"Dont Tell Anyone");
-
         $form->col(6);
         $form->group("Settings");
             $form->select("allowrlv","RLV support",$second_bot_config->get_allowRLV(),array(false=>"No",true=>"Yes"));
+            $form->text_input("Setting_RelayImToAvatarUUID","IM to UUID relay",36,$second_bot_config->get_Setting_RelayImToAvatarUUID(),"");
+            $form->text_input("Setting_DefaultSit_UUID","Default Sit UUID",36,$second_bot_config->get_Setting_DefaultSit_UUID(),"");
         $form->col(6);
         $form->group("HTTP interface");
             $form->direct_add("<p>Soon</p>");
-
         $form->col(6);
         $form->group("Discord [Relay]");
             $form->text_input("DiscordRelayHook","Discord [Relay] webhook",125,$second_bot_config->get_DiscordRelayHook(),"http://...");
             $form->text_input("discordgroupuuid","Discord [Relay] group",125,$second_bot_config->get_discordGroupTarget(),"Target group UUID");
+        $form->col(6);
         $form->group("Discord [Full]");
-            $form->direct_add("<p>Soon</p>");
+            $form->select("DiscordFull_Enable","Enable",$second_bot_config->get_DiscordFull_Enable(),array(false=>"No",true=>"Yes"));
+            $form->text_input("DiscordFull_Token","Client token",200,$second_bot_config->get_DiscordFull_Token(),"Find in discord dev bot");
+            $form->text_input("DiscordFull_ServerID","Server id",200,$second_bot_config->get_DiscordFull_ServerID(),"Find under widgets in discord");
         echo $form->render("Update","primary");
     }
     else
