@@ -20,6 +20,14 @@ if($pending_command_set->get_count() > 0)
     $running_bot = new running_bot();
     $client_rental = new client_rental();
 
+    function get_truefalse($a)
+    {
+        if($a == "1") return true;
+        else if($a == "true") return true;
+        else return false;
+    }
+
+
     if($second_bot_config->load($pending_command->get_secondbotconfiglink()) == true)
     {
         if($client->load($second_bot_config->get_clientlink()) == true)
@@ -38,7 +46,7 @@ if($pending_command_set->get_count() > 0)
                         "Security_SignedCommandkey"=>$second_bot_config->get_code(),
                         "Security_WebUIKey"=>$second_bot_config->get_code(),
 
-                        "Setting_AllowRLV"=>array(false=>"false",true=>"true")[$second_bot_config->get_allowRLV()],
+                        "Setting_AllowRLV"=>array(false=>"false",true=>"true")[get_truefalse($second_bot_config->get_allowRLV())],
                         "Setting_AllowFunds"=>"true",
                         "Setting_LogCommands"=>"true",
                         "Setting_RelayImToAvatarUUID"=>$second_bot_config->get_Setting_RelayImToAvatarUUID(),
@@ -46,7 +54,7 @@ if($pending_command_set->get_count() > 0)
 
                         "DiscordRelay_URL"=>$second_bot_config->get_DiscordRelayHook(),
                         "DiscordRelay_GroupUUID"=>$second_bot_config->get_discordGroupTarget(),
-                        "DiscordFull_Enable"=>array(false=>"false",true=>"true")[$second_bot_config->get_DiscordFull_Enable()],
+                        "DiscordFull_Enable"=>array(false=>"false",true=>"true")[get_truefalse($second_bot_config->get_DiscordFull_Enable())],
                         "DiscordFull_Token"=>$second_bot_config->get_DiscordFull_Token(),
                         "DiscordFull_ServerID"=>$second_bot_config->get_DiscordFull_ServerID(),
 
