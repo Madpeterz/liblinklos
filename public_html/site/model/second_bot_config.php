@@ -17,7 +17,6 @@
 			"DiscordRelayHook" => array("type"=>"str","value"=>null),
 			"discordGroupTarget" => array("type"=>"str","value"=>null),
 			"config_uid" => array("type"=>"str","value"=>null),
-			"port" => array("type"=>"str","value"=>null),
 			"Setting_RelayImToAvatarUUID" => array("type"=>"str","value"=>null),
 			"Setting_DefaultSit_UUID" => array("type"=>"str","value"=>null),
 			"DiscordFull_Enable" => array("type"=>"str","value"=>null),
@@ -67,10 +66,6 @@
 		public function get_config_uid()
 		{
 			return $this->get_field("config_uid");
-		}
-		public function get_port()
-		{
-			return $this->get_field("port");
 		}
 		public function get_Setting_RelayImToAvatarUUID()
 		{

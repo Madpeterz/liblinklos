@@ -16,10 +16,10 @@ $DiscordFull_ServerID = $input->postFilter("DiscordFull_ServerID");
 
 function truefalse(string $a)
 {
-    if($a == "true") return true;
-    else if($a == "false") return true;
-    else if($a == "1") return true;
-    else if($a == "0") return true;
+    if($a == true) return true;
+    else if($a == false) return true;
+    else if($a == 1) return true;
+    else if($a == 0) return true;
     else return false;
 }
 
