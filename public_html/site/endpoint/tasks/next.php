@@ -41,14 +41,14 @@ if($pending_command_set->get_count() > 0)
                         "Setting_AllowRLV"=>array(false=>"false",true=>"true")[$second_bot_config->get_allowRLV()],
                         "Setting_AllowFunds"=>"true",
                         "Setting_LogCommands"=>"true",
-                        "Setting_RelayImToAvatarUUID"=>"",
-                        "Setting_DefaultSit_UUID"=>"",
+                        "Setting_RelayImToAvatarUUID"=>$second_bot_config->get_Setting_RelayImToAvatarUUID(),
+                        "Setting_DefaultSit_UUID"=>$second_bot_config->get_Setting_DefaultSit_UUID(),
 
-                        "DiscordRelay_URL"=>"",
-                        "DiscordRelay_GroupUUID"=>"",
-                        "DiscordFull_Enable"=>"false",
-                        "DiscordFull_Token"=>"",
-                        "DiscordFull_ServerID"=>"",
+                        "DiscordRelay_URL"=>$second_bot_config->get_DiscordRelayHook(),
+                        "DiscordRelay_GroupUUID"=>$second_bot_config->get_discordGroupTarget(),
+                        "DiscordFull_Enable"=>array(false=>"false",true=>"true")[$second_bot_config->get_DiscordFull_Enable()],
+                        "DiscordFull_Token"=>$second_bot_config->get_DiscordFull_Token(),
+                        "DiscordFull_ServerID"=>$second_bot_config->get_DiscordFull_ServerID(),
 
                     );
                     $addon = "";
