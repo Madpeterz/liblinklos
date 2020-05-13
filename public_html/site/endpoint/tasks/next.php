@@ -96,6 +96,7 @@ if($pending_command_set->get_count() > 0)
 }
 else
 {
+    $reply["status"] = true;
     $reply["message"]= "nowork";
 }
 ?>
