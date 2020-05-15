@@ -13,7 +13,7 @@ $form->group("Basics");
 $form->col(6);
 $form->group("Security");
     $form->text_input("master","Master",125,null,"Bot Master");
-    $form->text_input("code","LSL interact code",125,null,"Dont Tell Anyone");
+    $form->text_input("code","LSL & HTTP interact code",125,null,"Dont Tell Anyone. Must be 12 Chars");
 $form->col(6);
 $form->group("Settings");
     $form->select("allowrlv","RLV support",0,array(0=>"No",1=>"Yes"));
