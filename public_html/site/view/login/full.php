@@ -7,7 +7,7 @@ if($area == "reset")
 else if($area == "create")
 {
     $template_parts["html_title"] = "Create password";
-    include("site/theme/".$site_theme."/blocks/login/reset.layout");
+    include("site/theme/".$site_theme."/blocks/login/create.layout");
 }
 else if($area == "resetwithtoken")
 {
