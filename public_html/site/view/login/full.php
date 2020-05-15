@@ -4,6 +4,11 @@ if($area == "reset")
     $template_parts["html_title"] = "Reset password";
     include("site/theme/".$site_theme."/blocks/login/reset.layout");
 }
+else if($area == "create")
+{
+    $template_parts["html_title"] = "Create password";
+    include("site/theme/".$site_theme."/blocks/login/reset.layout");
+}
 else if($area == "resetwithtoken")
 {
     $template_parts["html_title"] = "Recover password";
