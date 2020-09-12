@@ -39,11 +39,11 @@ if($pending_command_set->get_count() > 0)
                     $reply["containername"] = $client_rental->get_rental_uid();
                     $env_values = array(
                         "Basic_BotUserName"=>$second_bot_config->get_userName(),
-                        "Basic_BotPassword"=>"'".$second_bot_config->get_password()."'",
+                        "Basic_BotPassword"=>$second_bot_config->get_password(),
                         "Basic_HomeRegions"=>$second_bot_config->get_homeRegion(),
-                        "Security_MasterUsername"=>"'".$second_bot_config->get_master()."'",
-                        "Security_SignedCommandkey"=>"'".$second_bot_config->get_code()."'",
-                        "Security_WebUIKey"=>"'".$second_bot_config->get_Security_WebUIKey()."'",
+                        "Security_MasterUsername"=>$second_bot_config->get_master(),
+                        "Security_SignedCommandkey"=>$second_bot_config->get_code(),
+                        "Security_WebUIKey"=>$second_bot_config->get_Security_WebUIKey(),
 
                         "Setting_AllowRLV"=>array(false=>"false",true=>"true")[get_truefalse($second_bot_config->get_allowRLV())],
                         "Setting_AllowFunds"=>"true",
@@ -51,18 +51,18 @@ if($pending_command_set->get_count() > 0)
                         "Setting_RelayImToAvatarUUID"=>$second_bot_config->get_Setting_RelayImToAvatarUUID(),
                         "Setting_DefaultSit_UUID"=>$second_bot_config->get_Setting_DefaultSit_UUID(),
 
-                        "DiscordRelay_URL"=>"'".$second_bot_config->get_DiscordRelayHook(),
+                        "DiscordRelay_URL"=>$second_bot_config->get_DiscordRelayHook(),
                         "DiscordRelay_GroupUUID"=>$second_bot_config->get_discordGroupTarget(),
                         "DiscordFull_Enable"=>array(false=>"false",true=>"true")[get_truefalse($second_bot_config->get_DiscordFull_Enable())],
-                        "DiscordFull_Token"=>"'".$second_bot_config->get_DiscordFull_Token()."'",
+                        "DiscordFull_Token"=>$second_bot_config->get_DiscordFull_Token(),
                         "DiscordFull_ServerID"=>$second_bot_config->get_DiscordFull_ServerID(),
 
                         "Http_Enable" => array(false=>"false",true=>"true")[get_truefalse($second_bot_config->get_Http_Enable())],
                         "Http_Port" => $client_rental->get_Http_Port(),
                         "Http_Host" => "docker",
-                        "Http_PublicUrl" => ''.getenv('BOT_DOMAIN').'/'.$client_rental->get_Http_Port().'',
+                        "Http_PublicUrl" => getenv('BOT_DOMAIN').'/'.$client_rental->get_Http_Port(),
                         "VIRTUAL_PORT" => $client_rental->get_Http_Port(),
-                        "VIRTUAL_HOST" => ''.getenv('BOT_DOMAIN').'/'.$client_rental->get_Http_Port().'',
+                        "VIRTUAL_HOST" => getenv('BOT_DOMAIN').'/'.$client_rental->get_Http_Port(),
                     );
                     $addon = "";
                     $reply["containerenv"] = "";
